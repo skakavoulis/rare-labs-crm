@@ -1,3 +1,4 @@
+import { ChatService } from './../../../services/chat.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InputBarComponent implements OnInit {
 
-  constructor() { }
+  constructor(private chatService: ChatService) { }
 
   ngOnInit(): void {
+  }
+
+  sendMessage(sender: string, text: string) {
+    this.chatService.sendMessage({
+      sender,
+      text
+    });
   }
 
 }

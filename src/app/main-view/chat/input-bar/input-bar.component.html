@@ -1,1 +1,5 @@
-<p>input-bar works!</p>
+<label>Your name:</label>
+<input #userName type="text" placeholder="Type your username">
+<input #chatInput type="text" placeholder="Type your message and press Enter or click Send"
+    (keydown.enter)="sendMessage(userName.value, chatInput.value)">
+<button (click)="sendMessage(userName.value, chatInput.value)">Send</button>
