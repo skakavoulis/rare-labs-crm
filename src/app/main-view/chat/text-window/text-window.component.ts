@@ -20,7 +20,6 @@ export class TextWindowComponent implements OnInit, OnDestroy {
         this.messages.push(msg);
       })
       .add(this.subscription);
-    this.chatService.connect();
   }
 
   ngOnDestroy(): void {

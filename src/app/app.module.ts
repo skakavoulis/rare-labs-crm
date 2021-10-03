@@ -17,6 +17,7 @@ import { UserListComponent } from './main-view/user-list/user-list.component';
 import { UserUpdateComponent } from './main-view/user-update/user-update.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { NotificationsComponent } from './notifications/notifications.component';
+import { ChatNotificationsComponent } from './chat-notifications/chat-notifications.component';
 
 const maskConfigFunction: () => Partial<IConfig> = () => {
   return {
@@ -37,7 +38,8 @@ const maskConfigFunction: () => Partial<IConfig> = () => {
     ChatComponent,
     TextWindowComponent,
     InputBarComponent,
-    NotificationsComponent
+    NotificationsComponent,
+    ChatNotificationsComponent
   ],
   imports: [
     BrowserModule,
