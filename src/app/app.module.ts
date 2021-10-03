@@ -11,6 +11,9 @@ import { UserListComponent } from './main-view/user-list/user-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { UserCardComponent } from './main-view/user-card/user-card.component';
 import { UserUpdateComponent } from './main-view/user-update/user-update.component';
+import { ChatComponent } from './main-view/chat/chat.component';
+import { TextWindowComponent } from './main-view/chat/text-window/text-window.component';
+import { InputBarComponent } from './main-view/chat/input-bar/input-bar.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +24,10 @@ import { UserUpdateComponent } from './main-view/user-update/user-update.compone
     MainMenuComponent,
     UserListComponent,
     UserCardComponent,
-    UserUpdateComponent
+    UserUpdateComponent,
+    ChatComponent,
+    TextWindowComponent,
+    InputBarComponent
   ],
   imports: [
     BrowserModule,

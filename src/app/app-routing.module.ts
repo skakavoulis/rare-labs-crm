@@ -1,3 +1,4 @@
+import { ChatComponent } from './main-view/chat/chat.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
@@ -11,6 +12,7 @@ const routes: Routes = [
   { path: 'users', component: UserListComponent },
   { path: 'user/:id', component: UserCardComponent },
   { path: 'user/update/:id', component: UserUpdateComponent },
+  { path: 'chat', component: ChatComponent },
 ];
 
 @NgModule({
