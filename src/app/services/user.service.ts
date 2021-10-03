@@ -24,4 +24,20 @@ export class UserService {
         return [] as UserFromList[];
       });
   }
+
+  async getUser(id: any): Promise<any> {
+    const url = `${this.baseUrl}users/`;
+    return await firstValueFrom(this.api.get(url))
+      .then((res: any) => {
+        return res;
+      })
+      .catch(err => {
+        this.errorHandling.log('HTTP Error', err);
+        return [] as UserFromList[];
+      });
+  }
+
+  deleteUser(userId: number): Promise<any> {
+    throw new Error('Method not implemented.');
+  }
 }

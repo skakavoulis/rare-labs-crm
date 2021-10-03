@@ -4,5 +4,10 @@
         <a [routerLink]="'/user/' + user.id">
             {{user.username}}
         </a>
+        <button (click)="deleteUser(user.id)">Delete</button>
+        <a [routerLink]="['/user/update/', user.id]">Update</a>
+    </li>
+    <li>
+        <button>Add new</button>
     </li>
 </ul>

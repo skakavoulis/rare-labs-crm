@@ -9,6 +9,8 @@ import { FooterComponent } from './footer/footer.component';
 import { MainMenuComponent } from './main-view/main-menu/main-menu.component';
 import { UserListComponent } from './main-view/user-list/user-list.component';
 import { HttpClientModule } from '@angular/common/http';
+import { UserCardComponent } from './main-view/user-card/user-card.component';
+import { UserUpdateComponent } from './main-view/user-update/user-update.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { HttpClientModule } from '@angular/common/http';
     MainViewComponent,
     FooterComponent,
     MainMenuComponent,
-    UserListComponent
+    UserListComponent,
+    UserCardComponent,
+    UserUpdateComponent
   ],
   imports: [
     BrowserModule,
