@@ -3,8 +3,8 @@
 <form #form="ngForm" (ngSubmit)="form.valid && updateUser(_phone.value)">
     <input #_phone="ngModel" type="text" name="phone" id="phone" required minlength="9" [(ngModel)]="phone"
         mask="(000) 000 0000">
-    <input type="submit" value="Submit">
-    <div *ngIf="!_phone.valid" class="errors">
+    <input type="submit" value="Submit" [disabled]="form.touched && !form.valid">
+    <div *ngIf="form.touched && !_phone.valid" class="errors">
         <p *ngIf="_phone.errors?.minlength">The phone number should be at least 9 digits</p>
         <p *ngIf="_phone.errors?.required">The phone number is required</p>
     </div>

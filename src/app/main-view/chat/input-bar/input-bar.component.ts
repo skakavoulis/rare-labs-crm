@@ -16,7 +16,8 @@ export class InputBarComponent implements OnInit {
   sendMessage(sender: string, text: string) {
     this.chatService.sendMessage({
       sender,
-      text
+      text,
+      timestamp: new Date()
     });
   }
 

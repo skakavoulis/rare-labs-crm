@@ -1,7 +1,9 @@
-<p>text-window works!</p>
-
-<ul>
-    <li *ngFor="let message of messages">
-        <span>{{message.sender}}</span> says: <span>{{message.text}}</span>
-    </li>
-</ul>
+<div class="container">
+    <ul>
+        <li *ngFor="let message of messages">
+            <span>{{message.sender}}</span> says:
+            <span>{{message.text}}</span>
+            <p>{{message.timestamp | date:"MM/dd HH.mm"}}</p>
+        </li>
+    </ul>
+</div>

@@ -42,4 +42,5 @@ export class ChatService {
 export interface ChatMessage {
   sender: string;
   text: string;
+  timestamp: Date
 }

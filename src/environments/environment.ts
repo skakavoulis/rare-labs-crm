@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
   apiUrl: 'http://65.108.85.238:9000/api/',
-  wsUrl: 'ws://65.108.85.238:9000/chat'
+  wsUrl: 'ws://65.108.85.238:9000/chat',
+  notificationsAutoRemoveTicks: 10000
 };
 
 /*

@@ -24,7 +24,6 @@ export class TextWindowComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.chatService.close();
     this.subscription.unsubscribe();
   }
 }
