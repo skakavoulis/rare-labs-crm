@@ -12,6 +12,12 @@ export interface UserFromList {
     username: string;
 }
 
+export interface UserFull {
+    email: string;
+    id: number;
+    phoneNumber: number;
+}
+
 // Converts JSON strings to/from your types
 // and asserts the results of JSON.parse at runtime
 export class Convert {

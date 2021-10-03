@@ -1,43 +1,70 @@
-import { ErrorHandlingService } from './error-handling.service';
-import { Injectable } from '@angular/core';
-import { firstValueFrom, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { UserFromList } from './user-from-list';
+import { Injectable } from '@angular/core';
+import { firstValueFrom } from 'rxjs';
+import { Subject } from 'rxjs/internal/Subject';
+import { environment } from 'src/environments/environment';
+
+import { UserFromList, UserFull } from './user-from-list';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  private baseUrl = 'http://65.108.85.238:9000/api/';
+  private baseUrl = environment.apiUrl;
 
-  constructor(private api: HttpClient, private errorHandling: ErrorHandlingService) { }
+  public users$ = new Subject<UserFromList[]>();
 
-  async getUsers(): Promise<UserFromList[]> {
+  constructor(private api: HttpClient) { }
+
+  async loadUsers(): Promise<void> {
     const url = `${this.baseUrl}users`;
-    return await firstValueFrom(this.api.get(url))
+    const users = await firstValueFrom(this.api.get(url))
       .then((res: any) => {
-        return (res || [])[0];
+        const users = (res || [])[0];
+        this.users$.next(users);
       })
-      .catch(err => {
-        this.errorHandling.log('HTTP Error', err);
-        return [] as UserFromList[];
-      });
+      .catch(this.errorResponse);
   }
 
-  async getUser(id: any): Promise<any> {
-    const url = `${this.baseUrl}users/`;
+  async getUser(id: any): Promise<UserFull> {
+    const url = `${this.baseUrl}users/${id}`;
     return await firstValueFrom(this.api.get(url))
       .then((res: any) => {
         return res;
       })
-      .catch(err => {
-        this.errorHandling.log('HTTP Error', err);
-        return [] as UserFromList[];
-      });
+      .catch(this.errorResponse);
   }
 
-  deleteUser(userId: number): Promise<any> {
-    throw new Error('Method not implemented.');
+  async deleteUser(id: number): Promise<ActionResult> {
+    const url = `${this.baseUrl}users/${id}`;
+    return await firstValueFrom(this.api.delete(url))
+      .then(this.successResponse)
+      .catch(this.errorResponse);
   }
+
+  async updateUser(userId: number, phoneNumber: number): Promise<ActionResult> {
+    const url = `${this.baseUrl}users`;
+    return await firstValueFrom(this.api.put(url, { userId, phoneNumber }))
+      .then(this.successResponse)
+      .catch(this.errorResponse);
+  }
+
+  private errorResponse(err: any) {
+    return {
+      error: err,
+      success: false
+    } as ActionResult;
+  }
+
+  private successResponse(res: any) {
+    return {
+      success: true
+    } as ActionResult;
+  }
+}
+
+export interface ActionResult {
+  error: any;
+  success: boolean;
 }

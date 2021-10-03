@@ -10,29 +10,29 @@ import { NotificationsService } from 'src/app/services/notifications.service';
 })
 export class UserListComponent implements OnInit {
 
-  users: UserFromList[] = [];
+  constructor(public userService: UserService, private notification: NotificationsService) { }
 
-  constructor(private userService: UserService, private notification: NotificationsService) { }
+  async ngOnInit(): Promise<void> {
+    await this.userService.loadUsers();
+  }
 
   async deleteUser(userId: number) {
     const result = await this.userService.deleteUser(userId);
     this.handleResult(
       result,
       'User was deleted successfuly',
-      `The user could not be deleted: ${result.error}`
+      `The user could not be deleted: ${result?.error?.message}`
     );
+    await this.userService.loadUsers();
   }
 
   private handleResult(result: any, successMessage: string, errorMessage: string) {
-    if (!result.success) {
+    if (result.success) {
       this.notification.success(successMessage);
     } else {
       this.notification.error(errorMessage);
     }
   }
 
-  async ngOnInit(): Promise<void> {
-    this.users = await this.userService.getUsers()
-  }
 
 }
