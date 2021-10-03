@@ -7,22 +7,8 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
   templateUrl: './text-window.component.html',
   styleUrls: ['./text-window.component.scss']
 })
-export class TextWindowComponent implements OnInit, OnDestroy {
-
-  private subscription = new Subscription();
-  messages: any[] = [];
+export class TextWindowComponent {
 
   constructor(public chatService: ChatService) { }
 
-  ngOnInit(): void {
-    this.chatService.messages$
-      .subscribe(msg => {
-        this.messages.push(msg);
-      })
-      .add(this.subscription);
-  }
-
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe();
-  }
 }

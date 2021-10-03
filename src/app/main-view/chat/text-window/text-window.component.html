@@ -1,6 +1,6 @@
 <div class="container">
     <ul>
-        <li *ngFor="let message of messages">
+        <li *ngFor="let message of chatService.messages">
             <span>{{message.sender}}</span> says:
             <span>{{message.text}}</span>
             <p>{{message.timestamp | date:"MM/dd HH.mm"}}</p>
