@@ -1,3 +1,4 @@
+import { OverlayContainer } from '@angular/cdk/overlay';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -19,10 +20,29 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { ChatNotificationsComponent } from './chat-notifications/chat-notifications.component';
 
+import { TopInfoContentComponent } from './theme/components/top-info-content/top-info-content.component';
+import { SidenavComponent } from './theme/components/sidenav/sidenav.component';
+import { VerticalMenuComponent } from './theme/components/menu/vertical-menu/vertical-menu.component';
+import { HorizontalMenuComponent } from './theme/components/menu/horizontal-menu/horizontal-menu.component';
+import { FlagsMenuComponent } from './theme/components/flags-menu/flags-menu.component';
+import { FullScreenComponent } from './theme/components/fullscreen/fullscreen.component';
+import { ApplicationsComponent } from './theme/components/applications/applications.component';
+import { MessagesComponent } from './theme/components/messages/messages.component';
+import { UserMenuComponent } from './theme/components/user-menu/user-menu.component';
+import { FavoritesComponent } from './theme/components/favorites/favorites.component';
+import { AppSettings } from './app.settings';
+import { PerfectScrollbarConfigInterface, PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
+import { CustomOverlayContainer } from './theme/utils/custom-overlay-container';
+
 const maskConfigFunction: () => Partial<IConfig> = () => {
   return {
     validation: false,
   };
+};
+
+const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
+  wheelPropagation: true,
+  suppressScrollX: true
 };
 
 @NgModule({
@@ -39,7 +59,17 @@ const maskConfigFunction: () => Partial<IConfig> = () => {
     TextWindowComponent,
     InputBarComponent,
     NotificationsComponent,
-    ChatNotificationsComponent
+    ChatNotificationsComponent,
+    TopInfoContentComponent,
+    SidenavComponent,
+    VerticalMenuComponent,
+    HorizontalMenuComponent,
+    FlagsMenuComponent,
+    FullScreenComponent,
+    ApplicationsComponent,
+    MessagesComponent,
+    UserMenuComponent,
+    FavoritesComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,7 +78,9 @@ const maskConfigFunction: () => Partial<IConfig> = () => {
     FormsModule,
     NgxMaskModule.forRoot(maskConfigFunction),
   ],
-  providers: [],
+  providers: [AppSettings,
+    { provide: PERFECT_SCROLLBAR_CONFIG, useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG },
+    { provide: OverlayContainer, useClass: CustomOverlayContainer }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
