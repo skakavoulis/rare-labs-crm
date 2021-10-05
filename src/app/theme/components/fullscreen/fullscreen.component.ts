@@ -3,21 +3,21 @@ import { Component, ViewEncapsulation, ViewChild, HostListener, ElementRef } fro
 const document: any = window.document;
 
 @Component({
-  selector: 'app-fullscreen',
-  encapsulation: ViewEncapsulation.None,
-  template: `
+    selector: 'app-fullscreen',
+    encapsulation: ViewEncapsulation.None,
+    template: `
     <button mat-icon-button class="full-screen">
         <mat-icon *ngIf="!toggle" #expand>fullscreen</mat-icon>
         <mat-icon *ngIf="toggle" #compress>fullscreen_exit</mat-icon>
     </button> 
   `
 })
-export class FullScreenComponent { 
-    toggle:boolean = false;
-    @ViewChild('expand') private expand:ElementRef;
-    @ViewChild('compress') private compress:ElementRef; 
-   
-    requestFullscreen(elem) {
+export class FullScreenComponent {
+    toggle: boolean = false;
+    @ViewChild('expand') private expand?: ElementRef;
+    @ViewChild('compress') private compress?: ElementRef;
+
+    requestFullscreen(elem: any) {
         if (elem.requestFullscreen) {
             elem.requestFullscreen();
         } else if (elem.webkitRequestFullscreen) {
@@ -45,23 +45,23 @@ export class FullScreenComponent {
         }
     };
 
-    @HostListener('click') getFullscreen(){
-        if(this.expand){
+    @HostListener('click') getFullscreen() {
+        if (this.expand) {
             this.requestFullscreen(document.documentElement);
         }
-        if(this.compress){
+        if (this.compress) {
             this.exitFullscreen();
         }
     }
 
-    @HostListener('window:resize') onFullScreenChange(){
+    @HostListener('window:resize') onFullScreenChange() {
         let fullscreenElement = document.fullscreenElement || document.mozFullScreenElement ||
-                                document.webkitFullscreenElement || document.msFullscreenElement;
+            document.webkitFullscreenElement || document.msFullscreenElement;
         if (fullscreenElement != null) {
             this.toggle = true;
         } else {
-            this.toggle = false;          
+            this.toggle = false;
         }
-    }   
+    }
 
 }

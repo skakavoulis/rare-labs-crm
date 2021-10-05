@@ -15,7 +15,7 @@ export class SidenavComponent implements OnInit {
   public psConfig: PerfectScrollbarConfigInterface = {
     wheelPropagation: true
   };
-  public menuItems: Array<any> = [];
+  public menuItems?: Array<any>;
   public settings: Settings;
   constructor(public appSettings: AppSettings, public menuService: MenuService) {
     this.settings = this.appSettings.settings;

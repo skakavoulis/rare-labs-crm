@@ -7,15 +7,15 @@ import { MenuService } from '../menu/menu.service';
   styleUrls: ['./favorites.component.scss']
 })
 export class FavoritesComponent implements OnInit {
-  toppings;
+  toppings: any;
   toppingList: string[] = ['Extra cheese', 'Mushroom', 'Onion', 'Pepperoni', 'Sausage', 'Tomato'];
-  
-  public menuItems;
-  public favorites; 
-  constructor(public menuService:MenuService) { }
+
+  public menuItems: any;
+  public favorites: any;
+  constructor(public menuService: MenuService) { }
 
   ngOnInit() {
-    this.menuItems = this.menuService.getVerticalMenuItems().filter(menu => menu.routerLink != null || menu.href !=null);
+    this.menuItems = this.menuService.getVerticalMenuItems().filter(menu => menu.routerLink != null || menu.href != null);
   }
 
 }

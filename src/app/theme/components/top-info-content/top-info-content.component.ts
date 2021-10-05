@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter  } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { emailValidator } from '../../utils/app-validators';
 
@@ -8,7 +8,7 @@ import { emailValidator } from '../../utils/app-validators';
   styleUrls: ['./top-info-content.component.scss']
 })
 export class TopInfoContentComponent implements OnInit {
-  @Input('showInfoContent') showInfoContent:boolean = false;
+  @Input('showInfoContent') showInfoContent: boolean = false;
   @Output() onCloseInfoContent: EventEmitter<any> = new EventEmitter();
   contactForm: FormGroup;
   controls = [
@@ -20,9 +20,7 @@ export class TopInfoContentComponent implements OnInit {
     { name: 'Updates', checked: false },
     { name: 'Settings', checked: true }
   ]
-  constructor(public formBuilder: FormBuilder) { }
-
-  ngOnInit() {
+  constructor(public formBuilder: FormBuilder) {
     this.contactForm = this.formBuilder.group({
       email: ['', Validators.compose([Validators.required, emailValidator])],
       subject: ['', Validators.required],
@@ -30,13 +28,16 @@ export class TopInfoContentComponent implements OnInit {
     });
   }
 
-  public onContactFormSubmit(values:Object):void {
-    if (this.contactForm.valid) {
+  ngOnInit() {
+  }
+
+  public onContactFormSubmit(values: Object): void {
+    if (this.contactForm?.valid) {
       console.log(values);
     }
   }
 
-  public closeInfoContent(event){
+  public closeInfoContent(event: any) {
     this.onCloseInfoContent.emit(event);
   }
 

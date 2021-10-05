@@ -8,24 +8,24 @@ import { MenuService } from '../menu.service';
   templateUrl: './vertical-menu.component.html',
   styleUrls: ['./vertical-menu.component.scss'],
   encapsulation: ViewEncapsulation.None,
-  providers: [ MenuService ]
+  providers: [MenuService]
 })
 export class VerticalMenuComponent implements OnInit {
-  @Input('menuItems') menuItems;
-  @Input('menuParentId') menuParentId;
-  parentMenu:Array<any>;
+  @Input('menuItems') menuItems: any;
+  @Input('menuParentId') menuParentId: any;
+  parentMenu?: Array<any>;
   public settings: Settings;
-  constructor(public appSettings:AppSettings, public menuService:MenuService) { 
+  constructor(public appSettings: AppSettings, public menuService: MenuService) {
     this.settings = this.appSettings.settings;
   }
 
-  ngOnInit() {     
-    this.parentMenu = this.menuItems.filter(item => item.parentId == this.menuParentId);  
+  ngOnInit() {
+    this.parentMenu = this.menuItems.filter((item: any) => item.parentId == this.menuParentId);
   }
 
-  onClick(menuId){
+  onClick(menuId: any) {
     this.menuService.toggleMenuItem(menuId);
-    this.menuService.closeOtherSubMenus(this.menuItems, menuId);    
+    this.menuService.closeOtherSubMenus(this.menuItems, menuId);
   }
 
 }

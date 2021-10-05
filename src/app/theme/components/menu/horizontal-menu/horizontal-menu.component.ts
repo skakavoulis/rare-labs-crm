@@ -8,13 +8,13 @@ import { MenuService } from '../menu.service';
   templateUrl: './horizontal-menu.component.html',
   styleUrls: ['./horizontal-menu.component.scss'],
   encapsulation: ViewEncapsulation.None,
-  providers: [ MenuService ]
+  providers: [MenuService]
 })
 export class HorizontalMenuComponent implements OnInit {
-  @Input('menuParentId') menuParentId;
-  public menuItems:Array<any>;
+  @Input('menuParentId') menuParentId: any;
+  public menuItems?: Array<any>;
   public settings: Settings;
-  constructor(public appSettings:AppSettings, public menuService:MenuService) { 
+  constructor(public appSettings: AppSettings, public menuService: MenuService) {
     this.settings = this.appSettings.settings;
   }
 

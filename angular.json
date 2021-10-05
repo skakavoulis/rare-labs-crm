@@ -31,6 +31,10 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/@swimlane/ngx-datatable/release/themes/material.css",
+              "node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
+              "node_modules/angular-calendar/css/angular-calendar.css",
+              "node_modules/dragula/dist/dragula.min.css",
               "src/styles.scss"
             ],
             "scripts": []

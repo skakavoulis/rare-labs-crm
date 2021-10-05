@@ -28,24 +28,24 @@
         </div>                          
     </div>
     <div fxFlex="100" fxFlex.gt-sm="35" fxFlex.sm="50" ngClass.xs="pb-4" class="top-contact-form col">
-        <form [formGroup]="contactForm" (ngSubmit)="onContactFormSubmit(contactForm.value)" fxLayout="row wrap" class="px-2">            
+        <form [formGroup]="contactForm" (ngSubmit)="onContactFormSubmit(contactForm?.value)" fxLayout="row wrap" class="px-2">            
             <div fxFlex="100" class="">
                 <mat-form-field class="w-100">
                     <input matInput placeholder="Email" formControlName="email" required>
-                    <mat-error *ngIf="contactForm.controls.email.errors?.required">Email is required</mat-error>
-                    <mat-error *ngIf="contactForm.controls.email.hasError('invalidEmail')">Invalid email address</mat-error>
+                    <mat-error *ngIf="contactForm?.controls?.email?.errors?.required">Email is required</mat-error>
+                    <mat-error *ngIf="contactForm?.controls?.email?.hasError('invalidEmail')">Invalid email address</mat-error>
                 </mat-form-field>
             </div>
             <div fxFlex="100" class="">
                 <mat-form-field class="w-100">
                     <input matInput placeholder="Subject" formControlName="subject" required>
-                    <mat-error *ngIf="contactForm.controls.subject.errors?.required">Subject is required</mat-error>
+                    <mat-error *ngIf="contactForm?.controls?.subject?.errors?.required">Subject is required</mat-error>
                 </mat-form-field>
             </div>
             <div fxFlex="100" class="">
                 <mat-form-field class="w-100">
                     <input matInput placeholder="Message" formControlName="message" required>
-                    <mat-error *ngIf="contactForm.controls.message.errors?.required">Message is required</mat-error>
+                    <mat-error *ngIf="contactForm?.controls?.message?.errors?.required">Message is required</mat-error>
                 </mat-form-field>
             </div> 
             <div class="w-100 mt-1 text-center">
