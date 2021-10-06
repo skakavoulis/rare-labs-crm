@@ -30,14 +30,6 @@ export class UserCardComponent implements OnInit, OnDestroy {
     });
   }
 
-  openUserDialog(id: number): void {
-    this.router.navigate([`/user/${id}`]);
-  }
-
-  deleteUser(id: number): void {
-    this.delete.emit(id);
-  }
-
   ngOnDestroy(): void {
     this.routeSub.unsubscribe();
   }
