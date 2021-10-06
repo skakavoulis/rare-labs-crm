@@ -1,5 +1,3 @@
-import { ContentHeaderComponent } from './theme/components/content-header/content-header.component';
-import { BreadcrumbComponent } from './theme/components/breadcrumb/breadcrumb.component';
 import { OverlayContainer } from '@angular/cdk/overlay';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
@@ -37,6 +35,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { IConfig, NgxMaskModule } from 'ngx-mask';
 import { PERFECT_SCROLLBAR_CONFIG, PerfectScrollbarConfigInterface, PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 
@@ -44,6 +43,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AppSettings } from './app.settings';
 import { ChatNotificationsComponent } from './chat-notifications/chat-notifications.component';
+import { FeaturesComponent } from './features/features.component';
 import { FooterComponent } from './footer/footer.component';
 import { ChatComponent } from './main-view/chat/chat.component';
 import { InputBarComponent } from './main-view/chat/input-bar/input-bar.component';
@@ -55,6 +55,8 @@ import { UserListComponent } from './main-view/user-list/user-list.component';
 import { UserUpdateComponent } from './main-view/user-update/user-update.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { ApplicationsComponent } from './theme/components/applications/applications.component';
+import { BreadcrumbComponent } from './theme/components/breadcrumb/breadcrumb.component';
+import { ContentHeaderComponent } from './theme/components/content-header/content-header.component';
 import { FavoritesComponent } from './theme/components/favorites/favorites.component';
 import { FlagsMenuComponent } from './theme/components/flags-menu/flags-menu.component';
 import { FullScreenComponent } from './theme/components/fullscreen/fullscreen.component';
@@ -68,7 +70,6 @@ import { UserMenuComponent } from './theme/components/user-menu/user-menu.compon
 import { PipesModule } from './theme/pipes/pipes.module';
 import { CustomOverlayContainer } from './theme/utils/custom-overlay-container';
 import { ToolbarComponent } from './toolbar/toolbar.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
 const maskConfigFunction: () => Partial<IConfig> = () => {
   return {
@@ -107,7 +108,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     UserMenuComponent,
     FavoritesComponent,
     BreadcrumbComponent,
-    ContentHeaderComponent
+    ContentHeaderComponent,
+    FeaturesComponent
   ],
   imports: [
     FlexLayoutModule,

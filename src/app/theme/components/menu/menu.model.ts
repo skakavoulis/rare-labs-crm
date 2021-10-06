@@ -6,5 +6,6 @@ export class Menu {
         public icon: string | null,
         public target: string | null,
         public hasSubMenu: boolean,
-        public parentId: number) { }
+        public parentId: number,
+        public active = true) { }
 }

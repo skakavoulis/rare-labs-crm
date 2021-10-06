@@ -21,8 +21,8 @@
                     <div fxLayout="row" fxLayoutAlign="center center">
                         <a routerLink="/" fxLayout="row" fxLayoutAlign="start center" class="logo" ngClass.xs="mobile"
                             (click)="closeSubMenus()">
-                            <img src="assets/img/logo.png" alt="logo" [@rotate]="showSidenav">
-                            <span class="mx-2">ANNULAR</span>
+                            <img src="assets/logo.png" alt="logo" [@rotate]="!showSidenav">
+                            <span class="mx-2">Rare Labs</span>
                         </a>
                     </div>
                     <div fxLayout="row" fxLayoutAlign="start center" class="w-100">
@@ -69,12 +69,6 @@
             <mat-drawer #sidenav *ngIf="settings.menu == 'vertical'" [opened]="settings.sidenavIsOpened"
                 [mode]="(settings.sidenavIsPinned) ? 'side' : 'over'" (openedStart)="showSidenav = !showSidenav"
                 (closedStart)="showSidenav = !showSidenav" class="sidenav mat-elevation-z6" autoFocus="false">
-                <!-- <mat-toolbar *ngIf="settings.fixedSidenav" class="top-toolbar">
-                <a routerLink="/" fxLayout="row" fxLayoutAlign="start center" class="logo">
-                    <img src="assets/img/logo.png" alt="logo" [@rotate]="showSidenav">
-                    <span class="mx-2">ANNULAR</span>
-                </a>
-            </mat-toolbar> -->
                 <app-sidenav></app-sidenav>
             </mat-drawer>
 
@@ -204,14 +198,14 @@
         </div>
 
         <mat-toolbar color="primary" class="footer" [class.full-width]="!showSidenav">
-            <span>Rare labs copyright</span>
+            <span>Rare Labs Copyright ©2021</span>
             <img height="50" src="/assets/logo.png" />
         </mat-toolbar>
     </div>
 
     <div id="app-spinner" [class.hide]="!settings.loadingSpinner">
         <!--<mat-spinner color="primary"></mat-spinner> -->
-        <img src="assets/img/logo.png" class="animated-logo">
+        <img src="assets/logo.png" class="animated-logo">
         <h4>loading...</h4>
     </div>
 

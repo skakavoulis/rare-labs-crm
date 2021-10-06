@@ -10,6 +10,8 @@ export class MainMenuComponent implements OnInit {
   @Input()
   users: any;
 
+  public menuItems: any[] = [];
+
   constructor() { }
 
   ngOnInit(): void {
