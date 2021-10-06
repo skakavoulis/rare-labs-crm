@@ -1,13 +1,3 @@
-<!-- <div class="container">
-    <ul>
-        <li *ngFor="let message of chatService.messages">
-            <span>{{message.sender}}</span> says:
-            <span>{{message.text}}</span>
-            <p>{{message.timestamp | date:"MM/dd HH.mm"}}</p>
-        </li>
-    </ul>
-</div> -->
-
 <div #target class="chat-content actions-visible" perfectScrollbar>
     <mat-list class="p-0">
         <mat-list-item *ngFor="let message of chatService.messages" class="talk-item">
