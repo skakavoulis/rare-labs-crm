@@ -1,2 +1,74 @@
+<app-content-header [title]="'Chat'" [hideBreadcrumb]="false" [hasBgImage]="true" [class]="'pb-5'"></app-content-header>
+
+<mat-toolbar color="primary" fxLayout="row" fxLayoutAlign="space-between center" class="px-2 chat-toolbar">
+    <!-- <div fxLayout="row">
+        <button mat-icon-button (click)="sidenav.toggle()">
+            <mat-icon>list</mat-icon>
+        </button>
+    </div> -->
+    <div fxLayout="row" fxLayoutAlign="center center" *ngIf="currentChat">
+        <mat-list class="p-0">
+            <mat-list-item>
+                <img matListAvatar [src]="currentChat.image" class="author-img">
+            </mat-list-item>
+        </mat-list>
+        <span class="author-name">{{currentChat.author}}</span>
+        <button mat-icon-button [matMenuTriggerFor]="personMenu" #personMenuTrigger="matMenuTrigger">
+            <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #personMenu="matMenu" xPosition="before">
+            <span (mouseleave)="personMenuTrigger.closeMenu()">
+                <button mat-menu-item (click)="personInfo.toggle()">
+                    <mat-icon>account_circle</mat-icon>
+                    <span>Contact info</span>
+                </button>
+                <button mat-menu-item>
+                    <mat-icon>volume_mute</mat-icon>
+                    <span>Mute</span>
+                </button>
+                <button mat-menu-item>
+                    <mat-icon>delete_forever</mat-icon>
+                    <span>Clear chat</span>
+                </button>
+            </span>
+        </mat-menu>
+    </div>
+</mat-toolbar>
+
 <app-text-window></app-text-window>
 <app-input-bar></app-input-bar>
+<!-- 
+<div>
+    <div class="chat-content"  [class.actions-visible]="talks" perfectScrollbar>
+        <mat-list *ngIf="talks" class="p-0" >
+            <mat-list-item *ngFor="let talk of talks" class="talk-item">
+                <img matListAvatar [src]="talk.image">
+                <p matLine class="message">
+                    <span [ngClass]="(talk.my) ? 'bg-primary' : 'bg-accent'">{{talk.text}}</span>
+                </p>                             
+                <p matLine class="message-date">
+                    <small>{{talk.date | date:"dd MMMM, yyyy 'at' HH:mm"}}</small>
+                </p> 
+            </mat-list-item>
+        </mat-list>
+        <div *ngIf="!talks" fxLayout="column" fxLayoutAlign="center center" class="h-100 empty">
+            <mat-icon>chat</mat-icon>            
+            <p>Select a interlocutor for talk</p>
+        </div> 
+    </div>
+    <mat-card *ngIf="talks" class="chat-actions"> 
+        <div fxLayout="row" fxLayoutAlign="space-between center">
+            <mat-form-field class="w-100">
+                <input matInput placeholder="Enter your text..." (keyup)="sendMessage($event)" [(ngModel)]="newMessage">
+            </mat-form-field>
+            <div fxLayout="row" fxLayoutAlign="scenter center">
+                <button mat-icon-button type="button">
+                    <mat-icon>attach_file</mat-icon>
+                </button>
+                <button mat-mini-fab color="primary" type="button" (click)="sendMessage($event)">
+                    <mat-icon>send</mat-icon>
+                </button>
+            </div>
+            </div>
+    </mat-card>
+</div> -->

@@ -1,4 +1,4 @@
-<div class="container">
+<!-- <div class="container">
     <ul>
         <li *ngFor="let message of chatService.messages">
             <span>{{message.sender}}</span> says:
@@ -6,4 +6,19 @@
             <p>{{message.timestamp | date:"MM/dd HH.mm"}}</p>
         </li>
     </ul>
+</div> -->
+
+<div #target class="chat-content actions-visible" perfectScrollbar>
+    <mat-list class="p-0">
+        <mat-list-item *ngFor="let message of chatService.messages" class="talk-item">
+            <img matListAvatar src="assets/img/users/user.jpg">
+            <span>{{message.sender}}</span>
+            <p matLine class="message">
+                <span [ngClass]="(message.my) ? 'bg-primary' : 'bg-accent'">{{message.text}}</span>
+            </p>
+            <p matLine class="message-date">
+                <small>{{message.timestamp | date:"dd MMMM, yyyy 'at' HH:mm"}}</small>
+            </p>
+        </mat-list-item>
+    </mat-list>
 </div>

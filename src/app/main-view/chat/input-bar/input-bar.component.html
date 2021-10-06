@@ -1,5 +1,24 @@
-<label>Your name:</label>
+<!-- <label>Your name:</label>
 <input #userName type="text" placeholder="Type your username">
 <input #chatInput type="text" placeholder="Type your message and press Enter or click Send"
     (keydown.enter)="sendMessage(userName.value, chatInput.value); chatInput.value=''">
-<button (click)="sendMessage(userName.value, chatInput.value); chatInput.value=''">Send</button>
+<button (click)="sendMessage(userName.value, chatInput.value); chatInput.value=''">Send</button> -->
+
+<mat-card class="chat-actions">
+    <div style="display: flex;">
+        <input style="flex-basis: 20%;" #userName type="text" matInput placeholder="Type your username">
+        <div style="flex-basis: 80%;" fxLayoutAlign="space-between center">
+            <input #chatInput matInput placeholder="Enter your text..."
+                (keydown.enter)="sendMessage(userName.value, chatInput.value); chatInput.value=''">
+            <div fxLayout="row" fxLayoutAlign="scenter center">
+                <button mat-icon-button type="button">
+                    <mat-icon>attach_file</mat-icon>
+                </button>
+                <button mat-mini-fab color="primary" type="button"
+                    (click)="sendMessage(userName.value, chatInput.value); chatInput.value=''">
+                    <mat-icon>send</mat-icon>
+                </button>
+            </div>
+        </div>
+    </div>
+</mat-card>

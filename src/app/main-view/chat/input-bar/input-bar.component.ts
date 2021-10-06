@@ -1,5 +1,6 @@
 import { ChatService } from './../../../services/chat.service';
 import { Component, OnInit } from '@angular/core';
+import { LocalStoragePersist } from 'src/app/decorators';
 
 @Component({
   selector: 'app-input-bar',
