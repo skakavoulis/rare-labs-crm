@@ -3,6 +3,7 @@ import { ActivatedRoute, NavigationStart, Router } from '@angular/router';
 import { ChatService, ChatMessage } from './../services/chat.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-chat-notifications',
@@ -15,7 +16,10 @@ export class ChatNotificationsComponent implements OnInit {
 
   messages: ChatMessage[] = [];
 
-  constructor(private chat: ChatService, private router: Router) {
+  constructor(
+    private chat: ChatService,
+    private router: Router,
+    private snackbar: MatSnackBar) {
     router.events
       .pipe(filter(event => event instanceof NavigationStart),
     ).subscribe((event: any) => {
@@ -24,22 +28,18 @@ export class ChatNotificationsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.chat.messages$.subscribe(msg => {
+    this.chat.messages$.subscribe((msg: ChatMessage) => {
       if (!this.chatIsActive) {
-        this.messages.push(msg);
-        this.autoRemove(msg)
+        this.snackbar.open(`${msg.sender} has sent you a message`, 'dismiss',
+          {
+            duration: 10000,
+            politeness: 'assertive',
+            verticalPosition: 'top',
+            horizontalPosition: 'right'
+          });
       }
     });
     this.chat.connect();
-  }
-
-  private autoRemove(msg: ChatMessage) {
-    setTimeout(() => {
-      const index = this.messages.indexOf(msg);
-      if (index > -1) {
-        this.messages.splice(index, 1);
-      }
-    }, environment.notificationsAutoRemoveTicks);
   }
 
 }
