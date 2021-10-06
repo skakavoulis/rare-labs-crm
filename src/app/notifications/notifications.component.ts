@@ -31,7 +31,7 @@ export class NotificationsComponent implements OnInit {
             duration: 10000,
             politeness: 'assertive',
             verticalPosition: 'top',
-            panelClass: 'gradient-red'
+            panelClass: 'gradient-pink'
           });
       });
   }

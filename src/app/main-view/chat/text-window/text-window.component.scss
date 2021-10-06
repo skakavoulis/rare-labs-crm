@@ -78,7 +78,7 @@ div.container {
   );
   &.actions-visible {
     height: calc(
-      100vh - (#{$top-toolbar-height} + #{$footer-toolbar-height} + 254px)
+      100vh - (#{$top-toolbar-height} + #{$footer-toolbar-height} + 309px)
     );
   }
 }
