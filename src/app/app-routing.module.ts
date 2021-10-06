@@ -10,6 +10,7 @@ import { UserUpdateComponent } from './main-view/user-update/user-update.compone
 const routes: Routes = [
   { path: '', component: MainMenuComponent, },
   { path: 'users', component: UserListComponent },
+  // { path: 'users', component: UsersComponent },
   { path: 'user/:id', component: UserCardComponent },
   { path: 'user/update/:id', component: UserUpdateComponent },
   { path: 'chat', component: ChatComponent },

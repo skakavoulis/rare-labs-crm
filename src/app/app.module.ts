@@ -1,3 +1,5 @@
+import { ContentHeaderComponent } from './theme/components/content-header/content-header.component';
+import { BreadcrumbComponent } from './theme/components/breadcrumb/breadcrumb.component';
 import { OverlayContainer } from '@angular/cdk/overlay';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
@@ -104,6 +106,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     MessagesComponent,
     UserMenuComponent,
     FavoritesComponent,
+    BreadcrumbComponent,
+    ContentHeaderComponent
   ],
   imports: [
     FlexLayoutModule,

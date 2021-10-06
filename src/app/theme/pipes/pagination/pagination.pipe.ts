@@ -12,6 +12,9 @@ export class PaginationPipe implements PipeTransform {
                 length: data.length
             }
         }
+        if (!data) {
+            data = [];
+        }
         return this.paginate(data, args.pageSize, args.pageIndex);
     }
 

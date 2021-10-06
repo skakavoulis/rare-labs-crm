@@ -2,6 +2,8 @@ import { UserService } from './../../services/user.service';
 import { Component, Input, OnInit } from '@angular/core';
 import { UserFromList } from 'src/app/services/user-from-list';
 import { NotificationsService } from 'src/app/services/notifications.service';
+import { Settings } from 'src/app/app.settings.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-list',
@@ -10,7 +12,17 @@ import { NotificationsService } from 'src/app/services/notifications.service';
 })
 export class UserListComponent implements OnInit {
 
-  constructor(public userService: UserService, private notification: NotificationsService) { }
+  public page: any = 1;
+  public settings?: Settings;
+  public showSearch: boolean = false;
+  public viewType: string = 'grid';
+  public searchText: string = '';
+
+  constructor(
+    public userService: UserService,
+    private notification: NotificationsService,
+    private router: Router
+  ) { }
 
   async ngOnInit(): Promise<void> {
     await this.userService.loadUsers();
@@ -32,6 +44,15 @@ export class UserListComponent implements OnInit {
     } else {
       this.notification.error(errorMessage);
     }
+  }
+
+  openUserDialog(id: number): void {
+    this.router.navigate([`/user/update/${id}`]);
+  }
+
+  public changeView(viewType: any) {
+    this.viewType = viewType;
+    this.showSearch = false;
   }
 
 
