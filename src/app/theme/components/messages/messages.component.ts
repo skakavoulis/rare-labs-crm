@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewEncapsulation, ViewChild } from '@angular/core';
 import { MatMenuTrigger } from '@angular/material/menu';
-// import { MatMenuTrigger } from '@angular/material';
 import { MessagesService } from './messages.service';
 
 @Component({
@@ -13,13 +12,13 @@ import { MessagesService } from './messages.service';
 export class MessagesComponent implements OnInit {
   @ViewChild(MatMenuTrigger) trigger?: MatMenuTrigger;
   public selectedTab: number = 1;
-  public messages: Array<any>;
-  public files: Array<any>;
-  public meetings: Array<any>;
-  constructor(private messagesService: MessagesService) {
-    this.messages = messagesService.getMessages();
-    this.files = messagesService.getFiles();
-    this.meetings = messagesService.getMeetings();
+  public messages: Array<any> = [];
+  public files: Array<any> = [];
+  public meetings: Array<any> = [];
+  constructor() {
+    // this.messages = messagesService.getMessages();
+    // this.files = messagesService.getFiles();
+    // this.meetings = messagesService.getMeetings();
   }
 
   ngOnInit() {

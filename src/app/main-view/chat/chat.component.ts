@@ -11,7 +11,7 @@ export class ChatComponent implements OnInit {
     image: 'assets/img/users/user.jpg',
     name: 'Emilio Verdines',
     status: 'Online',
-    intro: 'Hi, Annular is a fully compatible with angular material 2, responsive, organized folder structure, clean & customizable code, easy to use and much more...',
+    intro: 'Hi, I deleiver value to companies like you, say hi...',
   };
 
   constructor() { }
